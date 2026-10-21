@@ -47,11 +47,11 @@ function Chapter({ n, title, en }: { n: string; title: string; en: string }) {
 
 const CHAT = [
   { who: "kuya 🍢", text: "uy anak. ano gusto mo?", en: "hey kid. what do you want?" },
-  { who: "you", text: "idk i just finished a book and now i'm in my flop era", en: "" },
+  { who: "you", text: "idk i just finished a book and now no book will compare", en: "" },
   { who: "kuya 🍢", text: "ay. hindi kita i-a-algorithm. ipakita mo lang sinusulat mo.", en: "oh. i won't algorithm you. just show me what you write." },
-  { who: "you", text: "like my notes app?? the 3am ones??", en: "" },
-  { who: "kuya 🍢", text: "lalo na yung 3am. tapos tutusukin ko ng 3 libro para sa'yo.", en: "especially the 3am ones. then i'll skewer 3 books for you." },
-  { who: "you", text: "ok this is giving side quest. bet.", en: "" },
+  { who: "you", text: "like my notes app?? the 2am ones??", en: "" },
+  { who: "kuya 🍢", text: "lalo na yung 2am. tapos tutusukin ko ng 3 libro para sa'yo.", en: "especially the 3am ones. then i'll skewer 3 books for you." },
+  { who: "you", text: "ok", en: "" },
 ];
 
 const TILT = ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2", "rotate-0", "-rotate-3"];
@@ -123,7 +123,7 @@ function Index() {
       <div className="mx-auto max-w-5xl px-6">
         <section className="relative grid gap-10 py-12 md:grid-cols-[1fr_1.1fr]">
           <div>
-            <p className="mb-4 font-display text-xs uppercase">prologue: 11:47pm, outside the 7-eleven</p>
+            <p className="mb-4 font-display text-xs uppercase">PROLOGUE: 11:47PM, OUTSIDE THE 7-ELEVEN IN ESCOLTA</p>
             <div className="flex flex-col gap-2">
               {CHAT.map((c, i) => (
                 <div key={i} className={`max-w-[85%] border-2 border-border px-3 py-2 text-sm hard-shadow-sm ${c.who === "you" ? "self-end bg-tarp text-primary-foreground" : "self-start bg-paper"}`}>
@@ -137,13 +137,13 @@ function Index() {
           </div>
           <div className="self-center">
             <div className="inline-block -rotate-2 border-4 border-border bg-sign px-6 py-4 text-primary-foreground hard-shadow">
-              <p className="font-marker text-4xl leading-none md:text-5xl">Bawal</p>
+              <p className="font-marker text-4xl leading-none md:text-5xl">bawal</p>
               <p className="font-marker text-2xl text-lime md:text-3xl">mag-overthink dito!!!</p>
               <p className="text-xs opacity-80">(no overthinking allowed here)</p>
               <p className="mt-1 font-marker text-lg">just paste ur writing</p>
             </div>
             <p className="mt-8 max-w-sm text-sm">
-              no account. no feed. no "because you watched". our AI reads your writing once, picks 3 books off kuya's cart, then forgets it like a finsta password.
+              no nothing. no account. no feed. no "because you watched". our magic box reads your writing once, picks 3 books off kuya's cart, then forgets it 100%
             </p>
           </div>
         </section>
@@ -153,8 +153,8 @@ function Index() {
         <section className="grid gap-6 border-4 border-border bg-paper p-5 hard-shadow md:grid-cols-[1fr_240px]">
           <div>
             <div className="mb-2 flex items-center justify-between gap-2">
-              <label htmlFor="sample" className="font-display text-sm uppercase">ur writing ↓ <span className="font-sans text-[10px] normal-case">(notes app, drafts, unsent texts)</span></label>
-              <button className="font-marker text-sm text-tarp underline" onClick={() => setText(SAMPLE)}><T tl="wala akong maisip, give me a sample" en="my mind is blank" /></button>
+              <label htmlFor="sample" className="font-display text-sm uppercase">YOHOO, DITO ANG TINGIN<br /><span className="font-sans text-[10px] normal-case">(yohoo, eyes over here)</span><br /> ↓ (notes app, drafts, unsent texts)</label>
+              <button className="font-marker text-sm text-tarp underline" onClick={() => setText(SAMPLE)}><T tl="wala akong maisip, give me a sample" en="my mind is a blank" /></button>
             </div>
             <textarea
               id="sample"
@@ -273,8 +273,8 @@ function Index() {
       <footer className="bg-primary px-6 py-14 text-center text-primary-foreground">
         <p className="font-display text-4xl leading-tight text-kwek md:text-6xl">HAYUP<br /><span className="text-lg text-primary-foreground md:text-2xl">I CAN'T</span><br />KEEP READING</p>
         <p className="mt-2 text-xs opacity-70">(damn, i can't stop reading)</p>
-        <p className="mt-8 font-marker text-lg">epilogue: kuya closes the cart. ur writing is already gone. the books stay.</p>
-        <p className="mx-auto mt-8 max-w-md text-xs opacity-70">picks by Lovable AI, from this cart only. writing is never saved. covers are fan-made, not the real ones.</p>
+        <p className="mt-8 font-marker text-lg">epilogue: kuya closes the cart. ur writing is already gone. books stay-yay.</p>
+        <p className="mx-auto mt-8 max-w-md text-xs opacity-70">writing is never saved. covers are fan-made, not the real ones.</p>
       </footer>
     </main>
   );
