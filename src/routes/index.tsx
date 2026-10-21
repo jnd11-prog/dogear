@@ -21,12 +21,39 @@ const SAMPLE =
   "My father kept every receipt in a shoebox under the stairs. After he died I sat on the cold floor sorting them — hardware stores, a diner I never knew he went to, a florist in March of a year my mother says nothing happened. I keep thinking there is a sentence hidden in the totals.";
 
 const MODES = [
-  { id: "mirror", label: "mirror me", sauce: "sweet sauce", hint: "books na kamukha mo", cls: "bg-kwek" },
-  { id: "challenge", label: "challenge me", sauce: "spicy", hint: "same hugot, ibang angle", cls: "bg-sign text-primary-foreground" },
-  { id: "surprise", label: "surprise me", sauce: "mystery suka", hint: "trust the process", cls: "bg-tarp text-primary-foreground" },
+  { id: "mirror", label: "mirror me", sauce: "sweet sauce", hint: "books na kamukha mo", en: "books that look like you", cls: "bg-kwek" },
+  { id: "challenge", label: "challenge me", sauce: "spicy", hint: "same hugot, ibang angle", en: "same deep feeling, different angle", cls: "bg-sign text-primary-foreground" },
+  { id: "surprise", label: "surprise me", sauce: "mystery suka", hint: "trust the process", en: "no notes, just vibes", cls: "bg-tarp text-primary-foreground" },
 ] as const;
 
 const GENRES = ["All", "Literary", "Speculative", "Nonfiction", "Poetry", "Classic"] as const;
+function T({ tl, en, className = "" }: { tl: string; en: string; className?: string }) {
+  return (
+    <span className={`inline-flex flex-col ${className}`}>
+      <span>{tl}</span>
+      <span className="font-sans text-[10px] normal-case tracking-normal opacity-70">({en})</span>
+    </span>
+  );
+}
+
+function Chapter({ n, title, en }: { n: string; title: string; en: string }) {
+  return (
+    <div className="mb-5 flex items-baseline gap-3">
+      <span className="border-2 border-border bg-primary px-2 py-0.5 font-display text-xs text-lime">CH.{n}</span>
+      <h2 className="font-display text-2xl uppercase md:text-3xl"><T tl={title} en={en} /></h2>
+    </div>
+  );
+}
+
+const CHAT = [
+  { who: "kuya 🍢", text: "uy anak. ano gusto mo?", en: "hey kid. what do you want?" },
+  { who: "you", text: "idk i just finished a book and now i'm in my flop era", en: "" },
+  { who: "kuya 🍢", text: "ay. hindi kita i-a-algorithm. ipakita mo lang sinusulat mo.", en: "oh. i won't algorithm you. just show me what you write." },
+  { who: "you", text: "like my notes app?? the 3am ones??", en: "" },
+  { who: "kuya 🍢", text: "lalo na yung 3am. tapos tutusukin ko ng 3 libro para sa'yo.", en: "especially the 3am ones. then i'll skewer 3 books for you." },
+  { who: "you", text: "ok this is giving side quest. bet.", en: "" },
+];
+
 const TILT = ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2", "rotate-0", "-rotate-3"];
 
 function Cover({ book, i = 0 }: { book: Book; i?: number }) {
@@ -78,7 +105,7 @@ function Index() {
   }
 
   const shelf = BOOKS.filter((b) => genre === "All" || b.genre === genre);
-  const ticker = "fishball ● kikiam ● books ● walang ads ● hindi namin sine-save writing mo ● 20 books lang, curated ● no algorithm stalking ● ";
+  const ticker = "fishball ● kikiam ● books ● walang ads (no ads) ● hindi namin sine-save writing mo (we don't save ur writing) ● 20 books lang (only 20 books) ● no algorithm stalking ● certified unc-proof ● booktok who? ● analog era core ● ";
 
   return (
     <main className="overflow-x-hidden">
@@ -94,36 +121,54 @@ function Index() {
       </header>
 
       <div className="mx-auto max-w-5xl px-6">
-        <section className="relative py-12">
-          <div className="inline-block -rotate-2 border-4 border-border bg-sign px-6 py-4 text-primary-foreground hard-shadow">
-            <p className="font-marker text-4xl leading-none md:text-5xl">Bawal</p>
-            <p className="font-marker text-2xl text-lime md:text-3xl">mag-overthink dito!!!</p>
-            <p className="font-marker text-lg">just paste ur writing</p>
+        <section className="relative grid gap-10 py-12 md:grid-cols-[1fr_1.1fr]">
+          <div>
+            <p className="mb-4 font-display text-xs uppercase">prologue: 11:47pm, outside the 7-eleven</p>
+            <div className="flex flex-col gap-2">
+              {CHAT.map((c, i) => (
+                <div key={i} className={`max-w-[85%] border-2 border-border px-3 py-2 text-sm hard-shadow-sm ${c.who === "you" ? "self-end bg-tarp text-primary-foreground" : "self-start bg-paper"}`}>
+                  <span className="font-marker text-[11px] opacity-80">{c.who}</span>
+                  <p>{c.text}</p>
+                  {c.en && <p className="text-[10px] italic opacity-70">↳ {c.en}</p>}
+                </div>
+              ))}
+              <p className="self-end font-marker text-[11px]">seen ✓✓</p>
+            </div>
           </div>
-          <p className="mt-8 max-w-lg text-sm">
-            paste literally anything you wrote: diary, tweet draft, unsent text sa ex. our AI reads it once, picks 3 books off the cart, then forgets it. no account, no stalking.
-          </p>
+          <div className="self-center">
+            <div className="inline-block -rotate-2 border-4 border-border bg-sign px-6 py-4 text-primary-foreground hard-shadow">
+              <p className="font-marker text-4xl leading-none md:text-5xl">Bawal</p>
+              <p className="font-marker text-2xl text-lime md:text-3xl">mag-overthink dito!!!</p>
+              <p className="text-xs opacity-80">(no overthinking allowed here)</p>
+              <p className="mt-1 font-marker text-lg">just paste ur writing</p>
+            </div>
+            <p className="mt-8 max-w-sm text-sm">
+              no account. no feed. no "because you watched". our AI reads your writing once, picks 3 books off kuya's cart, then forgets it like a finsta password.
+            </p>
+          </div>
         </section>
+
+        <Chapter n="1" title="ang order" en="the order" />
 
         <section className="grid gap-6 border-4 border-border bg-paper p-5 hard-shadow md:grid-cols-[1fr_240px]">
           <div>
             <div className="mb-2 flex items-center justify-between gap-2">
-              <label htmlFor="sample" className="font-display text-sm uppercase">ur writing ↓</label>
-              <button className="font-marker text-sm text-tarp underline" onClick={() => setText(SAMPLE)}>wala akong maisip, give me a sample</button>
+              <label htmlFor="sample" className="font-display text-sm uppercase">ur writing ↓ <span className="font-sans text-[10px] normal-case">(notes app, drafts, unsent texts)</span></label>
+              <button className="font-marker text-sm text-tarp underline" onClick={() => setText(SAMPLE)}><T tl="wala akong maisip, give me a sample" en="my mind is blank" /></button>
             </div>
             <textarea
               id="sample"
               value={text}
               onChange={(e) => setText(e.target.value)}
               rows={10}
-              placeholder="ok so basically..."
+              placeholder="ok so basically... (no one will see this. not even us.)"
               className="w-full resize-y border-2 border-border bg-background p-4 text-sm leading-7 outline-none focus:bg-lime/20"
               style={{ backgroundImage: "repeating-linear-gradient(transparent 0 27px, color-mix(in oklab, var(--tarp) 25%, transparent) 27px 28px)" }}
             />
             <p className="mt-1 text-right text-xs">{text.length}/6000 {text.trim().length > 0 && text.trim().length < 40 && "· konti pa"}</p>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="font-display text-sm uppercase">pick ur sauce</span>
+            <span className="font-display text-sm uppercase">ch.2 · pick ur sauce</span>
             {MODES.map((m) => (
               <button
                 key={m.id}
@@ -132,6 +177,7 @@ function Index() {
               >
                 <div className="font-display text-base">{m.label} {mode === m.id && "✓"}</div>
                 <div className="font-marker text-xs">{m.sauce} — {m.hint}</div>
+                <div className="text-[10px] opacity-80">({m.en})</div>
               </button>
             ))}
             <button
@@ -139,18 +185,18 @@ function Index() {
               disabled={loading || text.trim().length < 40}
               className="press mt-auto border-4 border-border bg-lime px-4 py-4 font-display text-xl uppercase hard-shadow disabled:opacity-40"
             >
-              {loading ? "frying…" : "tusukin na →"}
+              {loading ? "frying…" : <T tl="tusukin na →" en="skewer it" />}
             </button>
-            {exclude.length > 0 && <p className="font-marker text-xs">{exclude.length} book{exclude.length > 1 ? "s" : ""} na-ban</p>}
+            {exclude.length > 0 && <p className="font-marker text-xs">{exclude.length} book{exclude.length > 1 ? "s" : ""} na-ban (banned)</p>}
           </div>
         </section>
 
         <div aria-live="polite">
-          {loading && <p className="wobble mt-12 text-center font-display text-3xl">🍢 nagpi-prito pa…</p>}
+          {loading && <p className="wobble mt-12 text-center font-display text-3xl">🍢 nagpi-prito pa…<span className="block font-sans text-xs">(still frying. kuya is reading ur lore.)</span></p>}
           {result && !result.ok && <p className="mt-10 -rotate-1 border-4 border-border bg-sign p-4 font-marker text-lg text-primary-foreground">{result.error}</p>}
           {result?.ok && (
             <section className="mt-16">
-              <p className="font-display text-sm uppercase">ang narinig namin:</p>
+              <Chapter n="3" title="ang narinig namin" en="what we heard" />
               <p className="mt-2 max-w-2xl font-marker text-2xl leading-snug">“{result.voice}”</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {result.themes.map((t, i) => <span key={t} className={`border-2 border-border bg-lime px-3 py-1 text-xs ${TILT[i]}`}>#{t.toLowerCase().replace(/\s+/g, "")}</span>)}
@@ -169,10 +215,10 @@ function Index() {
                           <p className="text-xs">{b.author}, {b.year}</p>
                         </div>
                       </div>
-                      <p className="text-sm leading-relaxed"><span className="font-marker text-sign">bakit? </span>{p.why}</p>
+                      <p className="text-sm leading-relaxed"><span className="font-marker text-sign">bakit? <span className="font-sans text-[10px] text-foreground">(why)</span> </span>{p.why}</p>
                       <div className="mt-auto flex gap-2 text-xs">
                         <button onClick={() => toggleSave(b.id)} className="press border-2 border-border bg-lime px-3 py-1 hard-shadow-sm">{saved.includes(b.id) ? "saved ✓" : "+ save"}</button>
-                        <button onClick={() => toggleExclude(b.id)} className="press border-2 border-border bg-paper px-3 py-1 hard-shadow-sm">ick, next</button>
+                        <button onClick={() => toggleExclude(b.id)} className="press border-2 border-border bg-paper px-3 py-1 hard-shadow-sm">ick, next <span className="opacity-60">(not my vibe)</span></button>
                       </div>
                     </article>
                   );
@@ -184,7 +230,7 @@ function Index() {
 
         {saved.length > 0 && (
           <section className="mt-24">
-            <h2 className="font-display text-3xl uppercase">ur baon <span className="font-marker text-base normal-case">(saved, stays on ur phone)</span></h2>
+            <Chapter n="4" title="ur baon" en="ur packed snacks — saved on this device only" />
             <div className="mt-6 flex flex-wrap gap-5">
               {saved.map((id, i) => { const b = bookById(id); return b && (
                 <button key={id} onClick={() => toggleSave(id)} title="tap to remove"><Cover book={b} i={i} /></button>
@@ -198,6 +244,7 @@ function Index() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
             <h2 className="inline-block rotate-1 border-4 border-border bg-tarp px-4 py-2 font-display text-4xl text-lime outline-text hard-shadow">THE CART</h2>
+            <p className="mt-3 w-full font-marker text-sm">ch.5 · the lore: 20 books kuya actually read. no sponsored slots. no bestseller list. just vibes + receipts.</p>
             <div className="flex flex-wrap gap-2">
               {GENRES.map((g) => (
                 <button key={g} onClick={() => setGenre(g)} className={`press border-2 border-border px-3 py-1 text-xs hard-shadow-sm ${genre === g ? "bg-kwek" : "bg-paper"}`}>{g.toLowerCase()}</button>
@@ -225,6 +272,8 @@ function Index() {
 
       <footer className="bg-primary px-6 py-14 text-center text-primary-foreground">
         <p className="font-display text-4xl leading-tight text-kwek md:text-6xl">HAYUP<br /><span className="text-lg text-primary-foreground md:text-2xl">I CAN'T</span><br />KEEP READING</p>
+        <p className="mt-2 text-xs opacity-70">(damn, i can't stop reading)</p>
+        <p className="mt-8 font-marker text-lg">epilogue: kuya closes the cart. ur writing is already gone. the books stay.</p>
         <p className="mx-auto mt-8 max-w-md text-xs opacity-70">picks by Lovable AI, from this cart only. writing is never saved. covers are fan-made, not the real ones.</p>
       </footer>
     </main>
