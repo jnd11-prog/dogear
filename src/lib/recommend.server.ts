@@ -15,7 +15,7 @@ export async function runRecommendation(input: {
   mode: keyof typeof MODES;
   exclude: string[];
 }): Promise<RecommendResult> {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env["LOVABLE_API_KEY"];
   if (!apiKey) return { ok: false, error: "AI is not configured." };
 
   const shelf = BOOKS.filter((b) => !input.exclude.includes(b.id));
