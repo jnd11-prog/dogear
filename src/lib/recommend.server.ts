@@ -55,7 +55,7 @@ export async function runRecommendation(input: {
     return { ok: true, themes: out.themes, voice: out.voice, picks };
   } catch (e: unknown) {
     const status = (e as { statusCode?: number })?.statusCode;
-    if (status === 429) return { ok: false, error: "The reading room is busy. Try again in a moment." };
+    if (status === 429) return { ok: false, error: "ang daming tao sa pila. try ulit in a sec." };
     if (status === 402) return { ok: false, error: "AI credits are used up for this workspace." };
     console.error("recommend failed", status);
     return { ok: false, error: "We couldn't read that just now. Please try again." };
