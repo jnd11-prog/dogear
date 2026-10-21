@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- AI recommendations run in a server function (src/lib/recommend.*) via Lovable AI Gateway, constrained to the curated shelf in src/lib/books.ts; writing samples are never persisted — privacy is the product's core promise.
