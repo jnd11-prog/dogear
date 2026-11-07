@@ -1,0 +1,90 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: dogear recommendation API (API Gateway HTTP API + Lambda + DynamoDB rate limiting)
+
+Parameters:
+  ApiKeyParameterName:
+    Type: String
+    Default: dogear/llm-api-key
+    Description: SSM SecureString parameter name WITHOUT the leading slash (stored as /dogear/llm-api-key).
+  AllowedOrigins:
+    Type: String
+    Default: "*"
+    Description: Comma-separated list of browser origins allowed to call the API.
+  RateLimitPerHour:
+    Type: Number
+    Default: 20
+    Description: Maximum recommendation requests per client per hour.
+  ModelName:
+    Type: String
+    Default: openai/gpt-6-astra
+
+Globals:
+  Function:
+    Runtime: nodejs22.x
+    Architectures: [arm64]
+    MemorySize: 256
+    Timeout: 30
+
+Resources:
+  RateLimitTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: expiresAt
+        Enabled: true
+
+  RecommendApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins: !Split [",", !Ref AllowedOrigins]
+        AllowMethods: [POST, OPTIONS]
+        AllowHeaders: [content-type]
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 10
+        ThrottlingRateLimit: 5
+
+  RecommendFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .build/
+      Handler: aws/handler.handler
+      Environment:
+        Variables:
+          RATE_LIMIT_TABLE: !Ref RateLimitTable
+          RATE_LIMIT_PER_HOUR: !Ref RateLimitPerHour
+          API_KEY_PARAM: !Sub /${ApiKeyParameterName}
+          ALLOWED_ORIGINS: !Ref AllowedOrigins
+          DOGEAR_MODEL: !Ref ModelName
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref RateLimitTable
+        - SSMParameterReadPolicy:
+            ParameterName: !Ref ApiKeyParameterName
+        - Statement:
+            - Effect: Allow
+              Action: kms:Decrypt
+              Resource: "*"
+              Condition:
+                StringEquals:
+                  kms:ViaService: !Sub ssm.${AWS::Region}.amazonaws.com
+      Events:
+        Recommend:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref RecommendApi
+            Path: /recommend
+            Method: POST
+
+Outputs:
+  RecommendUrl:
+    Description: POST writing samples here
+    Value: !Sub https://${RecommendApi}.execute-api.${AWS::Region}.amazonaws.com/recommend
