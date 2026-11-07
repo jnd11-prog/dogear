@@ -1,0 +1,282 @@
+[
+  {
+    "id": "gilead",
+    "title": "Gilead",
+    "author": "Marilynne Robinson",
+    "year": 2004,
+    "genre": "Literary",
+    "themes": [
+      "faith",
+      "fathers",
+      "memory",
+      "small town"
+    ],
+    "blurb": "A dying preacher writes a long letter to his young son — patient, luminous attention to ordinary grace."
+  },
+  {
+    "id": "stoner",
+    "title": "Stoner",
+    "author": "John Williams",
+    "year": 1965,
+    "genre": "Literary",
+    "themes": [
+      "work",
+      "quiet lives",
+      "disappointment",
+      "love of books"
+    ],
+    "blurb": "An unremarkable professor's life, told so plainly it becomes devastating."
+  },
+  {
+    "id": "remains",
+    "title": "The Remains of the Day",
+    "author": "Kazuo Ishiguro",
+    "year": 1989,
+    "genre": "Literary",
+    "themes": [
+      "duty",
+      "regret",
+      "restraint",
+      "unreliable narrator"
+    ],
+    "blurb": "A butler's road trip becomes a slow reckoning with everything he chose not to feel."
+  },
+  {
+    "id": "housekeeping",
+    "title": "Housekeeping",
+    "author": "Marilynne Robinson",
+    "year": 1980,
+    "genre": "Literary",
+    "themes": [
+      "sisters",
+      "transience",
+      "water",
+      "grief"
+    ],
+    "blurb": "Two orphaned girls, an eccentric aunt, and a lake that keeps taking things."
+  },
+  {
+    "id": "normal-people",
+    "title": "Normal People",
+    "author": "Sally Rooney",
+    "year": 2018,
+    "genre": "Literary",
+    "themes": [
+      "intimacy",
+      "class",
+      "youth",
+      "miscommunication"
+    ],
+    "blurb": "Two people circle each other for years, never quite saying the thing."
+  },
+  {
+    "id": "left-hand",
+    "title": "The Left Hand of Darkness",
+    "author": "Ursula K. Le Guin",
+    "year": 1969,
+    "genre": "Speculative",
+    "themes": [
+      "gender",
+      "trust",
+      "cold",
+      "otherness"
+    ],
+    "blurb": "An envoy on a frozen world learns how little he understands about people."
+  },
+  {
+    "id": "station-eleven",
+    "title": "Station Eleven",
+    "author": "Emily St. John Mandel",
+    "year": 2014,
+    "genre": "Speculative",
+    "themes": [
+      "collapse",
+      "art",
+      "survival",
+      "connection"
+    ],
+    "blurb": "After the end, a travelling troupe performs Shakespeare because survival is insufficient."
+  },
+  {
+    "id": "never-let-me-go",
+    "title": "Never Let Me Go",
+    "author": "Kazuo Ishiguro",
+    "year": 2005,
+    "genre": "Speculative",
+    "themes": [
+      "mortality",
+      "childhood",
+      "acceptance",
+      "memory"
+    ],
+    "blurb": "Friends from an English boarding school slowly understand what they were made for."
+  },
+  {
+    "id": "piranesi",
+    "title": "Piranesi",
+    "author": "Susanna Clarke",
+    "year": 2020,
+    "genre": "Speculative",
+    "themes": [
+      "solitude",
+      "wonder",
+      "identity",
+      "labyrinth"
+    ],
+    "blurb": "A gentle man catalogues an endless house of statues and tides — and something is wrong."
+  },
+  {
+    "id": "parable",
+    "title": "Parable of the Sower",
+    "author": "Octavia E. Butler",
+    "year": 1993,
+    "genre": "Speculative",
+    "themes": [
+      "change",
+      "faith",
+      "community",
+      "climate"
+    ],
+    "blurb": "A teenage girl with radical empathy builds a new belief system as California burns."
+  },
+  {
+    "id": "h-is-for-hawk",
+    "title": "H Is for Hawk",
+    "author": "Helen Macdonald",
+    "year": 2014,
+    "genre": "Nonfiction",
+    "themes": [
+      "grief",
+      "nature",
+      "fathers",
+      "wildness"
+    ],
+    "blurb": "After her father dies, a writer trains a goshawk and nearly disappears into it."
+  },
+  {
+    "id": "braiding",
+    "title": "Braiding Sweetgrass",
+    "author": "Robin Wall Kimmerer",
+    "year": 2013,
+    "genre": "Nonfiction",
+    "themes": [
+      "plants",
+      "reciprocity",
+      "indigenous knowledge",
+      "gratitude"
+    ],
+    "blurb": "A botanist braids science and Potawatomi teaching into an ethic of gift."
+  },
+  {
+    "id": "year-magical",
+    "title": "The Year of Magical Thinking",
+    "author": "Joan Didion",
+    "year": 2005,
+    "genre": "Nonfiction",
+    "themes": [
+      "grief",
+      "marriage",
+      "control",
+      "precision"
+    ],
+    "blurb": "Didion turns her cool, exact sentences on the year her husband died."
+  },
+  {
+    "id": "bluets",
+    "title": "Bluets",
+    "author": "Maggie Nelson",
+    "year": 2009,
+    "genre": "Poetry",
+    "themes": [
+      "blue",
+      "heartbreak",
+      "obsession",
+      "fragments"
+    ],
+    "blurb": "240 numbered propositions about the colour blue and a love that ended."
+  },
+  {
+    "id": "citizen",
+    "title": "Citizen",
+    "author": "Claudia Rankine",
+    "year": 2014,
+    "genre": "Poetry",
+    "themes": [
+      "race",
+      "everyday harm",
+      "the body",
+      "witness"
+    ],
+    "blurb": "Lyric fragments of daily racism that accumulate into undeniable weight."
+  },
+  {
+    "id": "devotions",
+    "title": "Devotions",
+    "author": "Mary Oliver",
+    "year": 2017,
+    "genre": "Poetry",
+    "themes": [
+      "attention",
+      "nature",
+      "joy",
+      "prayer"
+    ],
+    "blurb": "Fifty years of looking closely at ponds, owls, and the mystery of being alive."
+  },
+  {
+    "id": "mrs-dalloway",
+    "title": "Mrs Dalloway",
+    "author": "Virginia Woolf",
+    "year": 1925,
+    "genre": "Classic",
+    "themes": [
+      "consciousness",
+      "time",
+      "city",
+      "trauma"
+    ],
+    "blurb": "One June day in London, flowing from mind to mind."
+  },
+  {
+    "id": "middlemarch",
+    "title": "Middlemarch",
+    "author": "George Eliot",
+    "year": 1871,
+    "genre": "Classic",
+    "themes": [
+      "ambition",
+      "marriage",
+      "community",
+      "moral growth"
+    ],
+    "blurb": "A whole town's hopes and compromises, observed with enormous sympathy."
+  },
+  {
+    "id": "moby-dick",
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "year": 1851,
+    "genre": "Classic",
+    "themes": [
+      "obsession",
+      "sea",
+      "digression",
+      "the unknowable"
+    ],
+    "blurb": "A whaling voyage, a mad captain, and every tangent a curious mind could take."
+  },
+  {
+    "id": "giovanni",
+    "title": "Giovanni's Room",
+    "author": "James Baldwin",
+    "year": 1956,
+    "genre": "Classic",
+    "themes": [
+      "desire",
+      "shame",
+      "exile",
+      "Paris"
+    ],
+    "blurb": "An American in Paris cannot let himself love the man he loves."
+  }
+]
