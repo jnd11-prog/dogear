@@ -11,7 +11,13 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "eval": "node eval/run.mjs",
+    "eval:all": "node eval/run.mjs --modes all --judge",
+    "test:node": "node --test \"eval/test/*.test.mjs\" \"aws/test/*.test.mjs\"",
+    "books:export": "node --experimental-strip-types scripts/export-books.mjs",
+    "aws:build": "node aws/build.mjs",
+    "aws:deploy": "node aws/build.mjs && sam deploy --template-file aws/template.yaml --guided"
   },
   "overrides": {
     "rolldown": "1.2.1"

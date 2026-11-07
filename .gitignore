@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Lambda bundle and dry-run eval output
+aws/.build/
+eval/results/dry-run-*/
